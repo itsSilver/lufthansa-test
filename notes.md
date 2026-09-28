@@ -26,6 +26,16 @@ Fonts load while the native splash screen is visible.
 
 The reference only shows a light theme. The dark theme surfaces, muted text and status colors (success/warning/danger) are derived by me to fit the palette.
 
+## Photos
+
+Onboarding photos are from [Pexels](https://www.pexels.com/license/) (free to use, no attribution required, credited anyway):
+
+| File                                   | Photo                                                                                                              | Photographer   |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------- |
+| `assets/images/onboarding/slide-1.jpg` | [Airplane flying in cloudy blue sky](https://www.pexels.com/photo/airplane-flying-in-cloudy-blue-sky-4618040/)     | Jonathan Borba |
+| `assets/images/onboarding/slide-2.jpg` | [Plane flying over clouds in blue sky](https://www.pexels.com/photo/plane-flying-over-clouds-in-blue-sky-4143427/) | Brett Sayles   |
+| `assets/images/onboarding/slide-3.jpg` | [Wing of airplane flying over clouds](https://www.pexels.com/photo/wing-of-airplane-flying-over-clouds-18459049/)  | Saket Suman    |
+
 ## UI patterns seen in the reference (to reuse)
 
 - Pill-shaped primary buttons with an icon circle (e.g. "Get Started" with a plane icon)

@@ -5,6 +5,7 @@ import {
 
 import { FavoritesScreen } from '@/screens/favorites/FavoritesScreen';
 import { HomeScreen } from '@/screens/home/HomeScreen';
+import { MoreDetailScreen } from '@/screens/more/MoreDetailScreen';
 import { MoreScreen } from '@/screens/more/MoreScreen';
 import { ProfileScreen } from '@/screens/profile/ProfileScreen';
 
@@ -60,6 +61,10 @@ export function MoreStackNavigator() {
   return (
     <MoreStack.Navigator screenOptions={screenOptions}>
       <MoreStack.Screen name="More" component={MoreScreen} />
+      <MoreStack.Screen name="Settings" component={MoreDetailScreen} />
+      <MoreStack.Screen name="Help" component={MoreDetailScreen} />
+      <MoreStack.Screen name="About" component={MoreDetailScreen} />
+      <MoreStack.Screen name="Contact" component={MoreDetailScreen} />
     </MoreStack.Navigator>
   );
 }

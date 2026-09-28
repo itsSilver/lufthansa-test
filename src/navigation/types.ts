@@ -1,4 +1,11 @@
 import type { NavigatorScreenParams } from '@react-navigation/native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+export type RootStackParamList = {
+  Onboarding: undefined;
+  Login: undefined;
+  Main: NavigatorScreenParams<MainTabParamList> | undefined;
+};
 
 export type MainTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList>;
@@ -21,4 +28,11 @@ export type ProfileStackParamList = {
 
 export type MoreStackParamList = {
   More: undefined;
+  Settings: undefined;
+  Help: undefined;
+  About: undefined;
+  Contact: undefined;
 };
+
+export type MoreStackScreenProps<T extends keyof MoreStackParamList> =
+  NativeStackScreenProps<MoreStackParamList, T>;

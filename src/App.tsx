@@ -4,10 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'nativewind';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 
 import { useAppReady } from '@/hooks/useAppReady';
-import { TabNavigator } from '@/navigation/TabNavigator';
+import { RootNavigator } from '@/navigation/RootNavigator';
 import { navigationTheme } from '@/navigation/theme';
+import { store } from '@/store';
 import { ThemeRoot } from '@/theme/ThemeRoot';
 
 export default function App() {
@@ -17,14 +19,16 @@ export default function App() {
   if (!isReady) return null;
 
   return (
-    <SafeAreaProvider>
-      <ThemeRoot>
-        <NavigationContainer
-          theme={navigationTheme(colorScheme)}
-          onReady={() => SplashScreen.hideAsync()}>
-          <TabNavigator />
-        </NavigationContainer>
-      </ThemeRoot>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <ThemeRoot>
+          <NavigationContainer
+            theme={navigationTheme(colorScheme)}
+            onReady={() => SplashScreen.hideAsync()}>
+            <RootNavigator />
+          </NavigationContainer>
+        </ThemeRoot>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
