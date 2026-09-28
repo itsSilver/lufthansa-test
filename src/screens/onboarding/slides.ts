@@ -1,8 +1,6 @@
-import type { ImageSourcePropType } from 'react-native';
-
 export type Slide = {
   key: string;
-  image: ImageSourcePropType;
+  image: number;
   title: string;
   description: string;
 };
@@ -31,4 +29,4 @@ export const slides: Slide[] = [
   },
 ];
 
-export const onboardingImages = slides.map((slide) => slide.image as number);
+export const onboardingImages = slides.map((slide) => slide.image);

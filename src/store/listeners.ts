@@ -2,6 +2,7 @@ import { createListenerMiddleware } from '@reduxjs/toolkit';
 import { colorScheme } from 'nativewind';
 import { REHYDRATE } from 'redux-persist';
 
+import { flightsApi } from './api/flightsApi';
 import { logout } from './slices/auth';
 
 import type { AppDispatch, RootState } from '.';
@@ -13,7 +14,6 @@ const startAppListening = listenerMiddleware.startListening.withTypes<
   AppDispatch
 >();
 
-// also fires on rehydrate, so the saved theme is applied before the splash hides
 startAppListening({
   predicate: (_action, current, previous) =>
     current.settings.themeMode !== previous.settings.themeMode,
@@ -30,5 +30,12 @@ startAppListening({
     if (expiresAt != null && expiresAt < Date.now()) {
       api.dispatch(logout());
     }
+  },
+});
+
+startAppListening({
+  actionCreator: logout,
+  effect: (_action, api) => {
+    api.dispatch(flightsApi.util.resetApiState());
   },
 });

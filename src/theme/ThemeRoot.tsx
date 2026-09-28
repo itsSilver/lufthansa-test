@@ -1,19 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { vars, useColorScheme } from 'nativewind';
+import { useColorScheme } from 'nativewind';
 import type { ReactNode } from 'react';
-import { View } from 'react-native';
 
-import { themeVariables } from './colors';
+import { ThemeScope } from './ThemeScope';
 
 export function ThemeRoot({ children }: { children: ReactNode }) {
-  const { colorScheme = 'light' } = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   return (
-    <View
-      className="flex-1 bg-background"
-      style={vars(themeVariables(colorScheme))}>
+    <ThemeScope className="flex-1 bg-background">
       {children}
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-    </View>
+    </ThemeScope>
   );
 }

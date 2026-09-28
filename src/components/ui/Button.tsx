@@ -10,6 +10,7 @@ type Props = {
   onPress: () => void;
   variant?: 'primary' | 'secondary';
   icon?: IconName;
+  iconPosition?: 'leading' | 'badge';
   loading?: boolean;
   disabled?: boolean;
 };
@@ -19,12 +20,14 @@ export function Button({
   onPress,
   variant = 'primary',
   icon,
+  iconPosition = 'badge',
   loading = false,
   disabled = false,
 }: Props) {
   const theme = useThemeColors();
   const isPrimary = variant === 'primary';
   const isInactive = disabled || loading;
+  const textColor = isPrimary ? theme['primary-foreground'] : theme.foreground;
 
   return (
     <Pressable
@@ -33,22 +36,28 @@ export function Button({
       accessibilityState={{ disabled: isInactive, busy: loading }}
       disabled={isInactive}
       onPress={onPress}
-      className={`h-14 flex-row items-center justify-center rounded-full px-16 active:opacity-80 ${
+      style={
+        isPrimary ? { boxShadow: `0 8px 20px ${theme.primary}40` } : undefined
+      }
+      className={`h-14 flex-row items-center justify-center gap-2 rounded-full px-16 active:opacity-80 ${
         isPrimary ? 'bg-primary' : 'border border-border bg-surface'
       } ${disabled ? 'opacity-50' : ''}`}>
       {loading ? (
-        <ActivityIndicator
-          color={isPrimary ? theme['primary-foreground'] : theme.foreground}
-        />
+        <ActivityIndicator color={textColor} />
       ) : (
-        <Text
-          className={`font-sans-medium text-base ${
-            isPrimary ? 'text-primary-foreground' : 'text-foreground'
-          }`}>
-          {title}
-        </Text>
+        <>
+          {icon && iconPosition === 'leading' ? (
+            <Icon name={icon} color={textColor} size={18} />
+          ) : null}
+          <Text
+            className={`font-sans-medium text-base ${
+              isPrimary ? 'text-primary-foreground' : 'text-foreground'
+            }`}>
+            {title}
+          </Text>
+        </>
       )}
-      {icon && !loading ? (
+      {icon && iconPosition === 'badge' && !loading ? (
         <View className="absolute right-1.5 top-1.5 h-11 w-11 items-center justify-center rounded-full bg-white">
           <Icon name={icon} color={palette.black} size={20} />
         </View>

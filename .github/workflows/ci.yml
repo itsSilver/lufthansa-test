@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   checks:
-    name: Lint & typecheck
+    name: Lint, typecheck & test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -21,6 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
+      - run: npm test
       - run: npx expo-doctor
 
   build:

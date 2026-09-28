@@ -2,15 +2,18 @@ import { useAssets } from 'expo-asset';
 import { useFonts } from 'expo-font';
 import { useEffect, useSyncExternalStore } from 'react';
 
+import { homeImages } from '@/screens/home/destinations';
 import { onboardingImages } from '@/screens/onboarding/slides';
 import { persistor } from '@/store';
 import { fonts } from '@/theme/fonts';
+
+const preloadImages = [...onboardingImages, ...homeImages];
 
 const isRehydrated = () => persistor.getState().bootstrapped;
 
 export function useAppReady(): boolean {
   const [fontsLoaded, fontError] = useFonts(fonts);
-  const [images, imagesError] = useAssets(onboardingImages);
+  const [images, imagesError] = useAssets(preloadImages);
   const rehydrated = useSyncExternalStore(persistor.subscribe, isRehydrated);
 
   useEffect(() => {

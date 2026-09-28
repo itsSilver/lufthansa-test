@@ -1,4 +1,4 @@
-// tailwind.config.ts imports this in node, so no react-native imports here
+// loaded by tailwind.config.ts in node: no react-native imports
 
 export const palette = {
   blue: '#6792EF',
@@ -22,7 +22,9 @@ export type ColorToken =
   | 'accent'
   | 'success'
   | 'warning'
-  | 'danger';
+  | 'danger'
+  | 'sky'
+  | 'field';
 
 export const colors: Record<ColorScheme, Record<ColorToken, string>> = {
   light: {
@@ -37,6 +39,8 @@ export const colors: Record<ColorScheme, Record<ColorToken, string>> = {
     success: '#2E9E6A',
     warning: '#E59A1A',
     danger: '#E5484D',
+    sky: '#CFE2F8',
+    field: '#F2F5FA',
   },
   dark: {
     background: palette.black,
@@ -50,6 +54,8 @@ export const colors: Record<ColorScheme, Record<ColorToken, string>> = {
     success: '#3DBE84',
     warning: '#F5B544',
     danger: '#F2555A',
+    sky: '#16243B',
+    field: '#232428',
   },
 };
 

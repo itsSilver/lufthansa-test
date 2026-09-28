@@ -20,7 +20,7 @@ function tabIcon(name: IconName) {
 
 export function TabNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, popToTopOnBlur: true }}>
       <Tab.Screen
         name="HomeTab"
         component={HomeStackNavigator}

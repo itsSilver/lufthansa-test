@@ -74,7 +74,9 @@ export function LoginScreen() {
               size={28}
             />
           </View>
-          <Text className="font-sans-bold text-3xl text-foreground">
+          <Text
+            maxFontSizeMultiplier={1.3}
+            className="font-sans-bold text-3xl text-foreground">
             Welcome back
           </Text>
           <Text className="text-center font-sans text-base text-muted">

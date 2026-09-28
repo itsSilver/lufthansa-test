@@ -1,7 +1,7 @@
+import { Image } from 'expo-image';
 import { useCallback, useRef, useState } from 'react';
 import {
   FlatList,
-  Image,
   Pressable,
   Text,
   useWindowDimensions,
@@ -88,13 +88,18 @@ export function OnboardingScreen() {
             className="gap-8 pt-2">
             <Image
               source={item.image}
-              resizeMode="cover"
-              accessibilityIgnoresInvertColors
-              style={{ width: width - SLIDE_PADDING * 2 }}
-              className="flex-1 rounded-[32px]"
+              contentFit="cover"
+              accessible={false}
+              style={{
+                flex: 1,
+                width: width - SLIDE_PADDING * 2,
+                borderRadius: 32,
+              }}
             />
             <View className="gap-3 px-4">
-              <Text className="text-center font-sans-bold text-3xl text-foreground">
+              <Text
+                maxFontSizeMultiplier={1.3}
+                className="text-center font-sans-bold text-3xl text-foreground">
                 {item.title}
               </Text>
               <Text className="text-center font-sans text-base leading-6 text-muted">

@@ -11,14 +11,19 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import { flightsApi } from './api/flightsApi';
 import { listenerMiddleware } from './listeners';
 import auth from './slices/auth';
+import favorites from './slices/favorites';
 import onboarding from './slices/onboarding';
+import recentSearches from './slices/recentSearches';
 import settings from './slices/settings';
 
 const rootReducer = combineReducers({
   settings,
   onboarding,
+  recentSearches,
+  favorites,
   auth: persistReducer(
     {
       key: 'auth',
@@ -27,6 +32,7 @@ const rootReducer = combineReducers({
     },
     auth,
   ),
+  [flightsApi.reducerPath]: flightsApi.reducer,
 });
 
 const persistedReducer = persistReducer(
@@ -34,7 +40,7 @@ const persistedReducer = persistReducer(
     key: 'root',
     version: 1,
     storage: AsyncStorage,
-    whitelist: ['settings', 'onboarding'],
+    whitelist: ['settings', 'onboarding', 'recentSearches', 'favorites'],
   },
   rootReducer,
 );
@@ -46,7 +52,9 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).prepend(listenerMiddleware.middleware),
+    })
+      .prepend(listenerMiddleware.middleware)
+      .concat(flightsApi.middleware),
 });
 
 export const persistor = persistStore(store);
