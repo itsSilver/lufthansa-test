@@ -1,19 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import './global.css';
+
+import { NavigationContainer } from '@react-navigation/native';
+import * as SplashScreen from 'expo-splash-screen';
+import { useColorScheme } from 'nativewind';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { useAppReady } from '@/hooks/useAppReady';
+import { TabNavigator } from '@/navigation/TabNavigator';
+import { navigationTheme } from '@/navigation/theme';
+import { ThemeRoot } from '@/theme/ThemeRoot';
 
 export default function App() {
+  const isReady = useAppReady();
+  const { colorScheme = 'light' } = useColorScheme();
+
+  if (!isReady) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Flight App</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <ThemeRoot>
+        <NavigationContainer
+          theme={navigationTheme(colorScheme)}
+          onReady={() => SplashScreen.hideAsync()}>
+          <TabNavigator />
+        </NavigationContainer>
+      </ThemeRoot>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
