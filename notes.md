@@ -15,14 +15,14 @@ Fonts load while the native splash screen is visible.
 
 **Colors** (source of truth: `src/theme/colors.ts`):
 
-| Role | Value | Source |
-|---|---|---|
-| Primary (buttons, active tab) | `#6792EF` | reference style guide |
-| Accent | `#5546FB` | reference style guide |
-| Black | `#0E0E0E` | reference neutral scale (sampled) |
-| Graphite | `#3F4246` | reference neutral scale (sampled) |
-| Silver | `#D6D6D6` | reference neutral scale (sampled) |
-| White | `#FFFFFF` | reference neutral scale |
+| Role                          | Value     | Source                            |
+| ----------------------------- | --------- | --------------------------------- |
+| Primary (buttons, active tab) | `#6792EF` | reference style guide             |
+| Accent                        | `#5546FB` | reference style guide             |
+| Black                         | `#0E0E0E` | reference neutral scale (sampled) |
+| Graphite                      | `#3F4246` | reference neutral scale (sampled) |
+| Silver                        | `#D6D6D6` | reference neutral scale (sampled) |
+| White                         | `#FFFFFF` | reference neutral scale           |
 
 The reference only shows a light theme. The dark theme surfaces, muted text and status colors (success/warning/danger) are derived by me to fit the palette.
 

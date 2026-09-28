@@ -1,7 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SymbolView, type SymbolViewProps } from 'expo-symbols';
 
-import { FavoritesStackNavigator, HomeStackNavigator, MoreStackNavigator, ProfileStackNavigator } from './stacks';
+import {
+  FavoritesStackNavigator,
+  HomeStackNavigator,
+  MoreStackNavigator,
+  ProfileStackNavigator,
+} from './stacks';
 import type { MainTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -13,7 +18,9 @@ declare module '@react-navigation/core' {
   interface RootNavigator extends TabNavigatorType {}
 }
 
-type AndroidSymbol = NonNullable<Extract<SymbolViewProps['name'], object>['android']>;
+type AndroidSymbol = NonNullable<
+  Extract<SymbolViewProps['name'], object>['android']
+>;
 type IosSymbol = NonNullable<Extract<SymbolViewProps['name'], object>['ios']>;
 
 function tabIcon(ios: IosSymbol, material: AndroidSymbol) {
@@ -39,7 +46,10 @@ export function TabNavigator() {
       <Tab.Screen
         name="FavoritesTab"
         component={FavoritesStackNavigator}
-        options={{ title: 'Favorites', tabBarIcon: tabIcon('heart', 'favorite') }}
+        options={{
+          title: 'Favorites',
+          tabBarIcon: tabIcon('heart', 'favorite'),
+        }}
       />
       <Tab.Screen
         name="ProfileTab"
@@ -49,7 +59,10 @@ export function TabNavigator() {
       <Tab.Screen
         name="MoreTab"
         component={MoreStackNavigator}
-        options={{ title: 'More', tabBarIcon: tabIcon('ellipsis', 'more_horiz') }}
+        options={{
+          title: 'More',
+          tabBarIcon: tabIcon('ellipsis', 'more_horiz'),
+        }}
       />
     </Tab.Navigator>
   );

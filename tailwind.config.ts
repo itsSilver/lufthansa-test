@@ -3,7 +3,10 @@ import type { Config } from 'tailwindcss';
 import { colorTokens } from './src/theme/colors';
 
 const themeColors = Object.fromEntries(
-  colorTokens.map((token) => [token, `rgb(var(--color-${token}) / <alpha-value>)`]),
+  colorTokens.map((token) => [
+    token,
+    `rgb(var(--color-${token}) / <alpha-value>)`,
+  ]),
 );
 
 export default {

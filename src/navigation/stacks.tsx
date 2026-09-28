@@ -1,4 +1,7 @@
-import { createNativeStackNavigator, type NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  type NativeStackNavigationOptions,
+} from '@react-navigation/native-stack';
 
 import { FavoritesScreen } from '@/screens/favorites/FavoritesScreen';
 import { HomeScreen } from '@/screens/home/HomeScreen';

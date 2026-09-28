@@ -60,8 +60,13 @@ export function hexToRgbChannels(hex: string): string {
   return [(value >> 16) & 255, (value >> 8) & 255, value & 255].join(' ');
 }
 
-export function themeVariables(scheme: ColorScheme): Record<`--color-${ColorToken}`, string> {
+export function themeVariables(
+  scheme: ColorScheme,
+): Record<`--color-${ColorToken}`, string> {
   return Object.fromEntries(
-    colorTokens.map((token) => [`--color-${token}`, hexToRgbChannels(colors[scheme][token])]),
+    colorTokens.map((token) => [
+      `--color-${token}`,
+      hexToRgbChannels(colors[scheme][token]),
+    ]),
   ) as Record<`--color-${ColorToken}`, string>;
 }

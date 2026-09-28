@@ -9,7 +9,9 @@ export function ThemeRoot({ children }: { children: ReactNode }) {
   const { colorScheme = 'light' } = useColorScheme();
 
   return (
-    <View className="flex-1 bg-background" style={vars(themeVariables(colorScheme))}>
+    <View
+      className="flex-1 bg-background"
+      style={vars(themeVariables(colorScheme))}>
       {children}
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
     </View>
